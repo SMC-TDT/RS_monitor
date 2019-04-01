@@ -1,0 +1,7 @@
+"data"	"sessió"	"hora"	"durada"	"altitud"	"pressió"	"rellançaments"	"fallida"	"activades"	"NA."
+"2019-03-28"	"nit"	"Si"	"00:45:17"	104.43	"31488"	9.3	0	"Correcte"	1
+"2019-03-28"	"nit"	"Si"	"00:45:17"	104.43	"31488"	9.3	0	"Correcte"	1
+"2019-03-28"	"mati"	"Si"	"12:46:06"	105.45	"30113"	11.2	0	"Correcte"	1
+"2019-03-28"	"nit"	"Si"	"00:45:17"	104.43	"31488"	9.3	0	"Correcte"	1
+"2019-03-28"	"mati"	"Si"	"12:46:06"	105.45	"30113"	11.2	0	"Correcte"	1
+"2019-03-28"	"nit"	"Si"	"00:45:17"	104.43	"31488"	9.3	0	"Correcte"	1
