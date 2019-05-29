@@ -1,189 +1,242 @@
-############################                                                                  #
-# Programa de lectura de radiosondatge                                                        #
-# Va a llegir el fitxer .log i en treu variables que ens interessen.                          #
-# Creació FRA 25/03/2019                                                                      # 
-# modificació: FRA 29 març 2019
-# modificació: FRA 17 abril 2019 s'han posat els errors en un únic fitxer general de sortida
-# modificació: FRA 2x abril 2019 s'ha integrat la funció al programa principal. Només un únic fitxer de partida. Més detalls al fitxer "descripció_nou_escript(curt).odt"
-############################                                                                  #
+## genera_dades_radiosonda.R ######################################################################
 
-# obrir i llegir fitxer .log
+## Created : Francesc Roura 25/03/2019
+## Last modified (28/05/2019): 
 
-any <- substr(Sys.Date(),1,4)
-mes <- substr(Sys.Date(),6,7)
-dia <- substr(as.character(Sys.Date()),9,10)
+## Passem a extreure només les 9 variables del log que més endavant ens serviran per trobar-ne la resta. 
+## Log separat en sondes. Tenim una sortida per a cada sonda activada.
 
-file1 <- paste("/mnt/Robotsonde/",any,"/",mes,"/",substr(any,3,4),mes,dia,"00.log",sep="")
+## Description : Programa de lectura de radiosondatge. Va a llegir el fitxer .log i en treu 
+## variables que ens interessen.                          
 
-  if(!file.exists(file1)){
-    file1 <- paste("/mnt/Robotsonde/",any,"/",mes,"/",substr(any,3,4),mes,dia,"12.log",sep="")
-      
-      if(!file.exists(file1)){
-        file1 <- NA
-        error <- paste("El fitxer .LOG del dia",any,mes,dia ,"no existeix", sep=" ")
-        print(error)
-        write.table(error,file="/home/becatdt/Francesc_Roura/RADIOSONDATGE/Renovació/radiosonda_errors_v2.txt", append = TRUE,sep="\t", row.names=F, col.names=F)
-        q(save="no", status = 0, runLast = TRUE)
-      }
-  }
+## LIBRARIES ######################################################################################
 
-file <- readLines(file1)
+library(stringi)
 
-# partir en dia/nit
-missatge_inici <- "Launch planned"
-missatge_fi <- "Radiosounding end"
+## FUNCTIONS ######################################################################################
 
-inici <- grep(missatge_inici,file,value=F)
-fi <- grep(missatge_fi,file,value=F)
-
-log11 <- file[inici[1]:fi[1]]
-log23 <- file[inici[2]:fi[2]]
-
-for(i in 1:2){
-  if(i==1){
-    logx <- log11
-    sessio <- "11:00"
-  }else{
-    logx <- log23
-    sessio <- "23:00"
-  }
-
-#####################################################################  
-#####################################################################  
-#####################################################################  
+extract_pattern <- function(str, patt){
+  # -----------------------------------------------------------------------------------------------
+  # Extracts a pattern from a string 
+  #
+  # PARAMETERS
+  # **********
+  # str : str
+  #   String
+  # patt : reg expr
+  #   Pattern string, regular expression
+  #
+  # RETURNS
+  # *******
+  # extr : str
+  #   Substring that matches the pattern
+  # -----------------------------------------------------------------------------------------------
   
-# declarar i inicialitzar variables
-    
-v_rell <- numeric(0) #rellançaments
-v_s_act <- numeric(0) #sondes activades
-v_fall <- numeric(0) #rellançaments fallits
-v_vol <- numeric(0) #sondes voladores (han abandonat el mòdul)
-v_real <- 0 #radiosondatge realitzat? (1/0)
-    
-SONDE <- grep("##### SONDE",logx,value=F)
-DEPART <- grep("DEPART DETECTE",logx,value=F)
-SONDAGE <- grep("SONDAGE OK",logx,value=F)
-ERROR <- c(grep("ERROR",logx,value=F),grep("CAUSE",logx,value=F))
-    
-# sondes activades
-v_s_act <- length(SONDE)
-    
-# sondes voladores  
-v_vol <- length(DEPART)
-    
-# realitzat?  
-v_real <- length(SONDAGE)
-    
-# llançaments fallits  
-v_fall <- v_s_act-v_real
-    
-# rellançaments
-v_rell <- v_s_act-1
-    
-#
-variables <- logx[SONDAGE]
-str_depart <- logx[DEPART]
-str_sonde <- logx[SONDE]
-str_error <- logx[ERROR]
-    
-output <- list(v_rell,v_s_act,v_fall,v_vol,v_real,variables,str_depart,str_sonde,str_error)
-names(output) <- c("rellançaments","activades","fallides","voladores","realitzat","variables","str_depart_detecte","str_sonde","errors") 
-    
-###################################################################################
-###################################################################################
-###################################################################################
-radio<-output
-###################################################################################
-
-## preparar variables per fitxer de sortida
-
-#data
-  data <- paste(any,mes,as.character(as.numeric(dia)-2),sep="-")
-
-#realitzat?
-  realitzat <- radio$realitzat
-
-#hora
-  hora <- substr(radio$variables,1,8)
-  if(radio[6]=="character(0)"){
-    hora <- NA
-  }
-#durada en hores
-  durada <- strptime(substr(radio$variables,1,8),"%H:%M:%OS")-strptime(substr(radio$str_depart_detecte,1,8),"%H:%M:%OS")
-  
-if(!is.na(durada)){
-  if(abs(durada)>25){durada <- durada/60} #distingir entre hores i minuts
-  if(as.numeric(durada)<0){
-    durada=durada+24
-  }
-# durada en minuts
-  durada <- substr(as.numeric(durada*60),0,5)
+  extr <- regmatches(str, regexpr(patt, str))
+  return(extr)
 }
-  
-# altitud en metres
-  altitud <- substr(radio$variables,36,40)
-  if(radio$variables=="character(0)"){
-    altitud <- NA
-  }
 
-# pressio 
-  pressio <- substr(radio$variables, 42, 46)
-  if (length(pressio) != 0) {
-    if (substring(pressio, 5, 5) == "h") {
-      pressio <- as.numeric(gsub("h", "", pressio))
-    } else {
-      pressio <- as.numeric(pressio)
+
+extract_data <- function(log_x,missatges){
+  # -----------------------------------------------------------------------------------------------
+  #
+  # PARAMETERS
+  # **********
+  # log_x : str
+  #   Part of the sondage log
+  # missatges : list
+  #   List with key messages 
+  #
+  # RETURNS
+  # *******
+  # sondage_data : list(session, position_into_the_carousel, ID_sonde, start_time, end_time, altitude, pressure, errors)
+  #   List containing extracted data
+  # -----------------------------------------------------------------------------------------------
+  
+  patt1_1 <- paste0("\\d*\\m\\s((\\d*)|(\\d*\\.\\d*))\\hPa")
+  match <- extract_pattern(log_x, patt1_1)
+  sondage_data[["altitude"]] <- substr(match,1,5)
+  
+  patt1_2 <- paste0("\\d*\\m\\s((\\d*)|(\\d*\\.\\d*))\\hPa")
+  match <- extract_pattern(log_x, patt1_2)
+  sondage_data[["pressure"]] <- as.numeric(substr(match,7,10))
+  
+  # log_sonde[[1]]
+  
+  patt2 <- paste0("\\s\\d{2}:\\d{2}\\s")
+  match <- extract_pattern(log_x, patt2)
+  sondage_data[["session"]] <- substr(match,2,6)
+  
+  patt3 <- paste0("\\d{2}:\\d{2}:\\d{2}\\s\\d{3}\\s\\IR2010\\s\\-->\\s\\", missatges$sortida) 
+  match <- extract_pattern(log_x, patt3)
+  sondage_data[["start_time"]] <- substr(match,1,8)
+  
+  patt4 <- paste0("\\d{2}:\\d{2}:\\d{2}\\s\\d{3}\\s\\IR2010\\s\\-->\\s\\", missatges$realitzacio)
+  match <- extract_pattern(log_x, patt4)
+  sondage_data[["end_time"]] <- substr(match,1,8)
+  
+  patt5 <- paste0("\\s\\d{9}\\s\\s\\d*")
+  match <- extract_pattern(log_x, patt5)
+  sondage_data[["ID_sonde"]] <- substr(match,2,10)
+  
+  patt6 <- paste0("\\SONDE\\s\\[\\s\\d*\\s\\]\\s\\d*")
+  match <- extract_pattern(log_x, patt6)
+  sondage_data[["position_carousel"]] <- as.numeric(substr(match,8,10))
+  
+  patt7_1 <- grep(missatges$errors,log_x,value=T)
+  patt7_2 <- grep(missatges$causa,log_x, value=T)
+  
+  sondage_data[["errors"]] <- substr(patt7_1,14,80)
+  sondage_data[["cause"]] <- substr(patt7_2,14,80)
+  
+  return(sondage_data)
+}
+
+
+split_log <- function(logi,missatges){
+  # -----------------------------------------------------------------------------------------------
+  #
+  # PARAMETERS
+  # **********
+  # logi : str
+  #   Part of the sondage log
+  # missatges : str
+  #   List with key messages
+  #
+  # RETURNS
+  # *******
+  # log_sonde : str
+  #   List with ordered sonde messages
+  # -----------------------------------------------------------------------------------------------
+  
+  sondei <- c(grep(missatges$activacio, logi, value=F))
+  
+  # Abans d'activar-se la primera sonda
+  log_sonde[[1]] <- logi[1:(sondei[1]-1)] 
+  
+  # Si tenim dues sondes o més
+  if(sondei[1]!=sondei[length(sondei)]){ 
+    for(j in 2:length(sondei)){
+      log_sonde[[j]] <- logi[sondei[j-1]:(sondei[j]-1)]
     }
   }
-
-#fallida
-  fallida <- radio$fallides
-
-#identificador sonda
-  id <- substr(radio$str_sonde,41,50)
-
-#fitxer
-  fitxer <- substr(file1,25,40)
   
-#errors
-sonde_error <- list()
-
-for(i in 1:length(SONDE)){
-  sonde_error[[i]]<-0
+  # Sonda final
+  log_sonde[[length(sondei)+1]] <- logi[sondei[length(sondei)]:length(logi)]
+  
+  return(log_sonde)
 }
 
-if(length(ERROR)!=0){
-  for(i in 1:length(ERROR)){
+## SETTINGS #######################################################################################
+
+date_rs <- "2019-05-06" # RS launch date
+path_in <- "/mnt/Robotsonde/2019/05"
+path_ou <- "/home/becatdt/Francesc_Roura/RADIOSONDATGE/Renovació/"
+
+## DEFAULT METADATA ###############################################################################
+
+# lag: delay in days between RS launch date and log filename date
+launches <- list("1"=list(time="00", lag=2), "2"=list(time="12", lag=1)) 
+
+# Llista de missatges importants en format llista
+missatges <- list(activacio="##### SONDE", 
+                  sortida="DEPART DETECTE", 
+                  realitzacio="SONDAGE OK", 
+                  errors="ERROR", 
+                  causa="CAUSE",
+                  inici="Launch planned", 
+                  final="Radiosounding end")
+
+###################################################################################################
+
+# Initialize list
+
+log_sonde <- list()
+sondage_data <- list()
+
+# Choose file
+
+if (is.null(date_rs)){
+  date_rs <- format(Sys.time()-2*86400, "%Y-%m-%d")
+}
+date_rs <- as.Date(date_rs)
+
+# Fitxers log d'entrada
+files_in <- sapply(launches, function(x) 
+{paste(path_in, paste0(format(date_rs+x$lag, "%y%m%d"), x$time, ".log"), sep="/")})
+
+# Seleccionar un dels fitxers que es trobin
+indx_f <- which(file.exists(files_in))[1]
+if(is.na(indx_f)){
+  stop(paste("No log files found for the selected date:", date_rs))
+}
+
+file_in <- files_in[[as.character(indx_f)]]
+# date_f <- date_rs+launches[[as.character(indx_f)]]$lag
+
+# Load log info
+conn <- file(file_in, "r")
+info <- readLines(conn, encoding = 'UTF-8')
+close(conn)
+
+# Identificar inici/final radiosondatge
+start_end <- list("inici"=grep(missatges$inici, info, value=F),"final"=grep(missatges$final, info, value=F))
+
+for(i in 1:length(start_end$inici)){
   
-    for(k in 1:(length(SONDE)-1)){
-      if(ERROR[i]>SONDE[k]&ERROR[i]<SONDE[k+1]){
-        sonde_error[[k]] <- append(sonde_error[[k]],ERROR[i])
-      }
-      if(ERROR[length(ERROR)]>SONDE[length(SONDE)]){
-        sonde_error[[length(ERROR)]]<-append(sonde_error[[length(ERROR)]],ERROR[length(ERROR)])
+  # Separar sessions(11:00 / 23:00)
+  logi <- info[start_end$inici[i]:start_end$final[i]]
+  
+  # Separar
+  log_sonde <- split_log(logi,missatges)
+
+
+
+  for(m in 2:length(log_sonde)){ # el primer element no correspon a cap sonda
+
+    # Extraiem les variables (sessió[11:00/23:00], posició carrussel[BXX], ID sonda[9 dígits], hora inici[hh:mm:ss], hora final[hh:mm:ss], altitud[m], pressió[hPa])
+  
+    out <- extract_data(log_sonde[[m]],missatges)
+
+    if(length(out$errors)>0){
+      for( k in 1:length(out$errors)){
+        out$errors[k] <- trimws(out$errors[k]) # delete spaces
       }
     }
-  }
-}
-
-#vàlvula fallida
-valv_fall <- paste("B",substr(radio$str_sonde,37,38),sep="")
-
-#fitxer de sortida
-  final <- list(data,fitxer,sessio,id,realitzat,hora,durada,altitud,as.numeric(pressio),radio$rellançaments,fallida,radio$activades,radio$voladores,NA,NA)
-  names(final) <- c("data","fitxer","sessió","id_sond","realit","hora","dur(min)","alti(m)","press(hPa)","rellanç","llanç.fall","activ","sond_voladores","errors","valv.fall")
-  final <- as.data.frame(final)
-
-#si tenim més d'una sonda activada, senyal que hi ha hagut algun error. Els introduïm al fitxer de sortida  
-  if(radio$activades>1){
-    for(i in 1:(radio$activades-1)){
-      final[i,] <- list(data,fitxer,sessio,id[i],0,NA,NA,NA,NA,NA,fallida,radio$activades,radio$voladores,paste(substr(logx[as.vector(sonde_error[[i]][2:length(sonde_error[[i]])])],14,80),collapse=" , "),valv_fall[i])
-    }
-  }
-
-#format data.frame
-  final <- as.data.frame(final)
   
-#Escriure fitxer de sortida
-  write.table(final,file="/home/becatdt/Francesc_Roura/RADIOSONDATGE/Renovació/radiosonda_v2.txt", append = TRUE,sep="\t", row.names=F, col.names=F)
+    if(length(out$cause)>0){
+      for( k in 1:length(out$cause)){
+        out$cause[k] <- trimws(out$cause[k]) # delete spaces
+      }
+    }
+  
+    if(length(out$errors) > 1){ # merge "error" messages in an unique string
+      out$errors <- stri_paste(out$errors[1:length(out$errors)],collapse=" || ")
+    }
+  
+  
+  
+    if(length(out$cause) > 1){ # ídem amb "cause"
+      out$cause <- stri_paste(out$cause[1:length(out$cause)],collapse=" || ")
+    }
+  
+    # print(out)
+    for(n in names(out)){
+       if(length(out[[n]]) == 0){
+         out[[n]] <- NA
+      }
+    }
+
+    # session
+    if(is.na(out$session)){
+      out$session <- extract_data(log_sonde[[1]], missatges)$session
+    }
+
+    # print(out$session)
+    
+    df <- as.data.frame(out)
+    write.table(df, paste(path_ou,"out_prova.txt",sep="") ,sep="\t", append = T, col.names = F, row.names = F)
+  }                              
 }
+
+
