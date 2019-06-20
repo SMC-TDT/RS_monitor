@@ -294,8 +294,25 @@ write_df <- function(df, file, path, hdr=NULL, create=TRUE, append=FALSE){
 # "2019-04-07"
 # "2019-05-13"
 
-date_rs <- "2019-04-31" # RS launch date
-path_inp <- paste("/mnt/Robotsonde/2019/", substr(date_rs,6,7),sep="")
+date_rs <- format(Sys.time()-2*86400, "%Y-%m-%d")
+
+hora_crontab <- format(strptime("07:30","%H:%M"),'%H:%M')
+hora_actual <- format(strptime(Sys.time(),"%Y-%m-%d\n%H:%M:%S"),'%H:%M')
+
+if(hora_crontab!=hora_actual){
+  cat("Enter a year (aaaa): \n")
+  aaaa <- readLines(file("stdin"), n = 1L)
+  cat("Enter a month (mm): \n")
+  mm <- readLines(file("stdin"), n = 1L)
+  cat("Enter a day (dd): \n")
+  dd <- readLines(file("stdin"), n = 1L)
+  
+  date_rs <- paste(aaaa,mm,dd,sep="-") # RS launch date
+}  
+
+print(paste("Radiosounding date:", date_rs))
+
+path_inp <- paste("/mnt/Robotsonde/",substr(date_rs,1,4),"/", substr(date_rs,6,7),sep="")
 path_out <- "/home/becatdt/Francesc_Roura/RADIOSONDATGE/Renovació/"
 file_out <- "monitorRS.txt"
 
@@ -304,7 +321,7 @@ file_out <- "monitorRS.txt"
 # lag: delay in days between RS launch date and log filename date
 launches <- list("1"=list(time="00", lag=2), "2"=list(time="12", lag=1)) 
 
-#llista d'errors
+# Llista d'errors
 msg_err <- list("1"="No start detection by IR2010",
                 "2"="Valve ejected, sonde switched",
                 "3"="Balloon disappearance",
@@ -356,6 +373,11 @@ grep_sonde_times <- list("launch"=messages$sonde_launch,
 
 # Mirar si el dia existeix
 try_date(date_rs)
+
+# 22/11/2018
+if(as.Date(date_rs)<as.Date("2018-11-22")){
+  print("ULL, CANVI DE FORMAT PER A DIES ANTERIORS AL 2018-11-22")
+}
 
 # Choose file
 if (is.null(date_rs)){
