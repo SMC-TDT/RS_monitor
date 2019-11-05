@@ -1,5 +1,5 @@
-Monitorització del radiosondatge
-================================
+Radiosounding monitoring
+========================
 
 This repository includes the R code for processing the log files output in the automatic radiosounding process carried out at the Meteorological Service of Catalonia.
 
