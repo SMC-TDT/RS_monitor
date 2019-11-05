@@ -23,7 +23,7 @@ The *DEFAULT METADATA* section of the *RS_readLOG_config.R* file includes variab
 
 Command line execution requires date input
 ```
-$ RScript /path_to_script/RS_readLOG_main.R -d "YYYY-MM_DD"
+$ RScript /path_to_script/RS_readLOG_main.R -d "YYYY-MM-DD"
 ```
 
 ## Processing several dates
