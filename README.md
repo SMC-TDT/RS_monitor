@@ -8,7 +8,9 @@ This repository includes the R code for processing the log files output in the a
 
 ## Most recent version
 
-The user input is the radiosounding date amd the script searches for the corresponding log file(s) in the input folder. The script parses the log file and divides it first into the different launches and then each launch into its different (if more than one) sonde activation processes. It outputs a sonde-based information table, containing the relevant data about the sonde performance. 
+The scripts required can be found in the *./prog/* folder. The *./docs/* folder contains a flowchart of the process carried out by the main script *RS_readLOG_main.R*.
+
+The user input is the radiosounding date and the main script searches for the corresponding log file(s) in the input folder. The script parses the log file and divides it first into the different launches and then each launch into its different (if more than one) sonde activation processes. It outputs a sonde-based information table, containing the relevant data about the sonde performance. 
 
 **Required libraries**
 
