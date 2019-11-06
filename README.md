@@ -3,13 +3,20 @@ Radiosounding monitoring
 
 This repository includes the R code for processing the log files output in the automatic radiosounding process carried out at the Meteorological Service of Catalonia.
 
+## First version
+----------------
+
+
+## Most recent version
+----------------------
+
 The user input is the radiosounding date amd the script searches for the corresponding log file(s) in the input folder. The script parses the log file and divides it first into the different launches and then each launch into its different (if more than one) sonde activation processes. It outputs a sonde-based information table, containing the relevant data about the sonde performance. 
 
-## Required libraries
+**Required libraries**
 
 - [optparse](https://cran.r-project.org/web/packages/optparse/index.html)
 
-## Configuration (RS_readLOG_config.R)
+**Configuration (RS_readLOG_config.R)**
 
 The following parameters may be modified in the *USER SETTINGS* section of the *RS_readLOG_config.R* file:
 
@@ -19,14 +26,14 @@ The following parameters may be modified in the *USER SETTINGS* section of the *
 
 The *DEFAULT METADATA* section of the *RS_readLOG_config.R* file includes variables and parameters specific to the parsing process and the particular structure of the log files. Do not modify it unless strictly necessary due to a major change in the log files (name, structure, content). It can also be modified if the error list needs to be updated (*msg_err* variable list).
 
-## Execution
+**Execution**
 
 Command line execution requires date input
 ```
 $ RScript /path_to_script/RS_readLOG_main.R -d "YYYY-MM-DD"
 ```
 
-## Processing several dates
+**Processing several dates**
 
 The repository includes a simple shell script for processing multiple dates: *man_RS_readLOG.sh*.
 
@@ -34,8 +41,7 @@ Open the script, modify STARTdate and ENDdate variables at convenience and execu
 ```
 $ ./man_RS_readLOG.sh
 ```
-
-## Output
+**Output**
 
 - date: radiosounding session date YYYY-MM-DD
 - type: type of session; automatic (auto) or manually triggered (trig)
