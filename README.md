@@ -3,14 +3,11 @@ Radiosounding monitoring
 
 This repository includes the R code for processing the log files output in the automatic radiosounding process carried out at the Meteorological Service of Catalonia.
 
-## First version
+## Latest version
 
+The scripts required can be found in the *./prog/* folder. The */log_data/* folder cointains sample log files. The *./docs/* folder contains a flowchart of the process carried out by the main script *RS_readLOG_main.R*.
 
-## Most recent version
-
-The scripts required can be found in the *./prog/* folder. The *./docs/* folder contains a flowchart of the process carried out by the main script *RS_readLOG_main.R*.
-
-The user input is the radiosounding date and the main script searches for the corresponding log file(s) in the input folder. The script parses the log file and divides it first into the different launches and then each launch into its different (if more than one) sonde activation processes. It outputs a sonde-based information table, containing the relevant data about the sonde performance. 
+The user input for the main script is the radiosounding date. The script searches for the corresponding log file(s) in the input folder. Then, it parses the log file and divides it first into the different launches and then each launch into its different (if more than one) sonde activation processes. It outputs a sonde-based information table, containing the relevant data about the sonde performance. 
 
 **Required libraries**
 
@@ -57,3 +54,15 @@ $ ./man_RS_readLOG.sh
 - sonde_depart: wheter the sonde has departed or not (1/0 boolean)
 - sonde_OK: whether the sonde has reached the required level (1/0 boolean)
 - errors: IDs of the encountered errors
+
+## Operative version (2014-2019)
+
+**Required libraries**
+
+**Configuration**
+
+**Execution**
+
+**Output**
+
+**Visualization**
