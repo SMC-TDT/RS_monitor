@@ -4,11 +4,9 @@ Radiosounding monitoring
 This repository includes the R code for processing the log files output in the automatic radiosounding process carried out at the Meteorological Service of Catalonia.
 
 ## First version
-----------------
 
 
 ## Most recent version
-----------------------
 
 The user input is the radiosounding date amd the script searches for the corresponding log file(s) in the input folder. The script parses the log file and divides it first into the different launches and then each launch into its different (if more than one) sonde activation processes. It outputs a sonde-based information table, containing the relevant data about the sonde performance. 
 
