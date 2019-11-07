@@ -147,4 +147,4 @@ for (f_in in files_in){
 }
 
 data_out <- data_out[!duplicated(data_out), ]
-write_df(df=data_out, file=file_out, path=path_out, append=TRUE)
+write_df(df=data_out, file=fname_out, path=path_out, append=TRUE)

@@ -1,6 +1,9 @@
 Radiosounding monitoring
 ========================
 
-This repository includes the R code for processing the log files output in the automatic radiosounding process carried out at the Meteorological Service of Catalonia.
+This repository includes the R code for processing the log files output in the automatic radiosounding process carried out at the SMC. The */log_data/* folder contains sample log files. 
 
-The repository contains two different versions; the first is the version operative since 2014 that includes log file processing and interactive result visualization and the second is a 2019 version that improves the previous in robustness and flexibility but has only implemented the log file processing.
+The repository contains two different versions:
+
+- **2014_version**: operative since 2014, includes log file processing and interactive result visualization.
+- **2019_version**: developed in 2019, improves the previous version in robustness and flexibility but only implements the log file processing.

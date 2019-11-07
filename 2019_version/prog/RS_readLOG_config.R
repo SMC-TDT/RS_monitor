@@ -10,7 +10,7 @@ path_in <- "../../log_data"
 path_out <- "../output"
 
 # Output file name
-file_out <- "monitorRS.txt"
+fname_out <- "monitorRS.txt"
 
 ## DEFAULT METADATA #####################################################################
 ## Do not modify this section unless you know what you are doing!
