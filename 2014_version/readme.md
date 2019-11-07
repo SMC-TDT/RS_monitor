@@ -27,18 +27,18 @@ The user should configure the process by specifying the following variable value
 
 **genera_dades_radiosonda.R**:
 
-- path_log: input path where log files are stored; the storage must follow the structure: path_in/YYYY/MM/
-- path_out: output path where output files will be stored
-- fname_out: output file; all launch data entries are accumulated in this file.
-- fname_err: output file; all error data entries are accumulated in this file.
+- *path_log*: input path where log files are stored; the storage must follow the structure: path_in/YYYY/MM/
+- *path_out*: output path where output files will be stored
+- *fname_out*: output file; all launch data entries are accumulated in this file.
+- *fname_err*: output file; all error data entries are accumulated in this file.
 
 **radiomonit.rhtml**
 
-- path_inp: input path where files output by the previous process are stored; see *path_out* variable above
-- fname_inp: input file name (without path); see *fname_out* variable above
-- fname_err: input file name (without path); see *fname_err* variable above
-- path_out: output path where output figures will be stored; commonly a subfolder in */var/ww/html/*
-- path_lib: path where required libraries are installed or *NULL* 
+- *path_inp*: input path where files output by the previous process are stored; see *path_out* variable above
+- *fname_inp*: input file name (without path); see *fname_out* variable above
+- *fname_err*: input file name (without path); see *fname_err* variable above
+- *path_out*: output path where output figures will be stored; commonly a subfolder in */var/ww/html/*
+- *path_lib*: path where required libraries are installed or *NULL* 
 
 # Execution
 
@@ -53,23 +53,23 @@ $ RScript /path_to_script/genera_dades_radiosonda.R
 
 Contains a table with the following radiosounding session data columns (space separated):
 
-- Data: radiosounding session date, YYYY-MM-DD
-- Sessio: radiosounding session type; either "mati" (morning) or "nit" (evening)
-- Realitzat: whether the radiosounding was successful (reach nominal height); either "Si" or "No"
-- Hora: sonde flight end time, HH:MM:SS
-- Durada: sonde flight duration in minutes
-- Altitut: altitude reached by the sonde in meters
-- Pressio: pressure reading [hPa]
-- Rellançaments: number of failed launches
-- Fallida: carousel position(s) of failed sonde(s)
-- Sondes: number of sondes used
+- *Data*: radiosounding session date, YYYY-MM-DD
+- *Sessio*: radiosounding session type; either "mati" (morning) or "nit" (evening)
+- *Realitzat*: whether the radiosounding was successful (reach nominal height); either "Si" or "No"
+- *Hora*: sonde flight end time, HH:MM:SS
+- *Durada*: sonde flight duration in minutes
+- *Altitut*: altitude reached by the sonde in meters
+- *Pressio*: pressure reading [hPa]
+- *Rellançaments*: number of failed launches
+- *Fallida*: carousel position(s) of failed sonde(s)
+- *Sondes*: number of sondes used
 
 **radiosonda_errors.txt:**
 
 Contains a table with the following error data columns (space separated):
 
-- Data: error date, YYYY-MM-DD
-- Hora: error time, HH:MM:SS
-- Error: error message
+- *Data*: error date, YYYY-MM-DD
+- *Hora*: error time, HH:MM:SS
+- *Error*: error message
 
 # Visualization
