@@ -71,5 +71,3 @@ Contains a table with the following error data columns (space separated):
 - *Data*: error date, YYYY-MM-DD
 - *Hora*: error time, HH:MM:SS
 - *Error*: error message
-
-# Visualization
