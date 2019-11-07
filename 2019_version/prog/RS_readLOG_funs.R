@@ -15,6 +15,7 @@
 # extract_error
 # extract_pattern
 # extract_time
+# find_date
 # find_rs_sessions
 # sonde_data
 # sonde_times
