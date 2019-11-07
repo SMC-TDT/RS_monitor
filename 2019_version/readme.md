@@ -11,13 +11,13 @@ The scripts required can be found in the *./prog/* folder. The output file is st
 
 - [optparse](https://cran.r-project.org/web/packages/optparse/index.html)
 
-# Configuration (RS_readLOG_config.R)
+# Configuration
 
 The following parameters may be modified in the *USER SETTINGS* section of the *RS_readLOG_config.R* file:
 
-- path_in: input path where log files are stored; the storage must follow the structure: path_in/YYYY/MM/
-- path_out: output path where output file will be stored
-- fname_out: output file; all sonde data entries are accumulated in this file.
+- *path_in*: input path where log files are stored; the storage must follow the structure: path_in/YYYY/MM/
+- *path_out*: output path where output file will be stored
+- *fname_out*: output file; all sonde data entries are accumulated in this file.
 
 The *DEFAULT METADATA* section of the *RS_readLOG_config.R* file includes variables and parameters specific to the parsing process and the particular structure of the log files. Do not modify it unless strictly necessary due to a major change in the log files (name, structure, content). It can also be modified if the error list needs to be updated (*msg_err* variable list).
 
@@ -42,17 +42,17 @@ $ ./man_RS_readLOG.sh
 
 Contains a table with the following data columns (space separated):
 
-- date: radiosounding session date, YYYY-MM-DD
-- type: type of session; automatic (auto) or manually triggered (trig)
-- session: radiosounding session time HH:MM
-- sonde_id: sonde identifier
-- sonde_position: sonde position in the carousel
-- time_launch: sonde launch time, HH:MM:SS
-- time_depart: sonde departure time, HH:MM:SS
-- time_end: sonde flight end time, HH:MM:SS
-- duration: sonde flight duration in seconds (time_end - time_depart)
-- altitude: altitude reached by the sonde in meters
-- pressure: pressure reading [hPa]
-- sonde_depart: whether the sonde has departed or not (1/0 booleans)
-- sonde_OK: whether the sonde has reached the required level (1/0 booleans)
-- errors: IDs of the encountered errors
+- *date*: radiosounding session date, YYYY-MM-DD
+- *type*: type of session; automatic (auto) or manually triggered (trig)
+- *session*: radiosounding session time HH:MM
+- *sonde_id*: sonde identifier
+- *sonde_position*: sonde position in the carousel
+- *time_launch*: sonde launch time, HH:MM:SS
+- *time_depart*: sonde departure time, HH:MM:SS
+- *time_end*: sonde flight end time, HH:MM:SS
+- *duration*: sonde flight duration in seconds (time_end - time_depart)
+- *altitude*: altitude reached by the sonde in meters
+- *pressure*: pressure reading [hPa]
+- *sonde_depart*: whether the sonde has departed or not (1/0 booleans)
+- *sonde_OK*: whether the sonde has reached the required level (1/0 booleans)
+- *errors*: IDs of the encountered errors
