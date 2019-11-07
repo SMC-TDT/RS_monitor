@@ -1,0 +1,56 @@
+
+10:50:00 880	======================= Launch planned 11:00 =====================
+10:50:00 880	Sondes list :   X   X   X   X   X   X   X   X   X   3.1   3.1   3.1
+10:50:00 880	Flowmeter : 17.5°C, 1.212 bar
+10:50:00 880	Wind OK    (3.3 m/s   106°)
+10:50:01 207	Radiosounding software connection
+10:50:06 262	IR2010 --> STATION OK. PRESSION BARO=1008.7
+10:50:06 262	IR2010 <-- 11404.0 MHz ?
+10:50:16 402	IR2010 --> FREQUENCE LIBRE
+10:50:16 402	IR2010 <-- 14SOL DD=105° :FF=3.0M/S :T=24.08°C :U=72.2%
+10:50:16 402	Relaunch parameters 10min 300hPa
+10:50:16 901	############## SONDE [ 10 ] 905212755   404.000 MHz ##############
+10:50:16 901	Age sonde 3.1, balloon 3.1, position 01h
+10:50:16 901	IR2010 <-- 12SONDE EN MARCHE EFFECTUE :SN=905212755 :TR=243Cx10 :TC=242Cx10 :KT=099533 :UR=50% :UC=50% :KU=0000
+10:51:06 119	IR2010 --> FICHIERS CREES=c:\gpsonde\Data\2019\BA201910131051.cor
+10:51:06 119	IR2010 --> SONDE 905212755 OK : 16.9°C 71.5% 5.7V
+10:51:06 119	Camera: 20191013_1051_1.jpg
+10:51:13 716	############## INFLATION 1000 l, Source 1, 1.212 bar #############
+10:51:37 350	Balloon detection low     (47 l, 131 l/mn, 1.263 bar)
+10:53:15 303	Balloon detection high    (227 l, 93 l/mn, 1.160 bar)
+10:56:54 593	GAS SOURCE 1 EMPTY : 49.9 l/mn, 471 l, 1.072 mbar
+10:56:54 593	Poursuite gonflage/Following inflation source 1
+11:52:05 324	Inflating timeout                                                     < ERROR
+11:52:05 839	Inflation stopped [ 10 ] at 860 l, remaining 0.0 m3 / 0.0 m3, 0 l/mn, 1.004 bar
+11:52:06 276	IR2010 <-- 16ARRET
+11:52:06 276	======================= Radiosounding end ========================
+11:52:06 276	Next launch : 13 oct 23:00
+
+17:53:14 074	Balloon absence low 
+17:53:17 724	Balloon detection low 
+17:53:20 158	Balloon absence high
+17:53:20 158	Balloon absence low 
+17:53:56 054	Balloon detection high
+17:53:59 704	Balloon detection low 
+17:54:08 830	Balloon absence high
+17:54:16 131	Balloon absence low 
+17:55:29 139	Balloon detection high
+17:55:29 139	Balloon detection low 
+17:55:30 964	Balloon absence high
+17:55:31 573	Balloon absence low 
+17:56:58 792	Chargement/loading [ 1 ]
+17:57:02 287	Door open
+17:59:31 376	GC value sonde ON: 75.5%
+17:59:35 885	GC value sonde OFF: 75.3%
+18:02:01 293	Chargement/Loading [ 1 ] 905212755 5.5V 6028Hz TR=226Cx10:TC=227Cx10:KT=100483:UR=75%:UC=78%:KU=0000
+18:02:08 001	Chargement/loading [ 4 ]
+18:03:07 343	GC value sonde ON: 75.8%
+18:03:11 883	GC value sonde OFF: 75.9%
+18:04:26 934	Chargement/Loading [ 4 ] 905212581 5.8V 6040Hz TR=226Cx10:TC=226Cx10:KT=099970:UR=76%:UC=79%:KU=0000
+18:04:37 418	Door closed
+18:04:44 718	Door open
+18:04:46 544	Door closed
+22:50:00 585	Launch delayed (23:00) : No gas                                       < ERROR
+22:59:55 804	============== Launch canceled (23:00) : No gas =============         < ERROR
+22:59:55 804	Next launch : 14 oct 11:00
+

@@ -1,0 +1,245 @@
+07:50:28 165	Roof opening
+07:50:43 010	Roof open
+07:50:44 961	Roof closing
+07:51:00 989	Roof closed
+07:51:01 761	Roof opening
+07:51:16 541	Roof open
+07:51:17 720	Roof closing
+07:51:33 067	Roof closed
+07:51:46 856	Roof opening
+07:52:01 716	Roof open
+07:52:03 809	Roof closing
+07:52:19 694	Roof closed
+08:20:22 295	Roof opening
+08:20:37 420	Roof open
+08:28:14 068	Roof closing
+08:28:29 900	Roof closed
+08:29:52 090	Roof opening
+08:30:07 433	Roof open
+08:30:08 288	Roof closing
+08:30:23 955	Roof closed
+08:36:38 995	STOP button                                                           < ERROR
+08:42:14 564	Door open
+08:46:13 190	Roof opening
+08:46:28 329	Roof open
+08:46:35 660	Roof closing
+08:46:51 644	Roof closed
+08:50:31 891	Door closed
+08:55:58 622	Roof opening
+08:56:13 431	Roof open
+08:57:50 338	Roof closing
+08:58:06 017	Roof closed
+08:58:20 695	Roof opening
+08:58:35 639	Roof open
+08:58:49 706	Roof open
+08:58:56 197	Roof closing
+08:59:12 047	Roof closed
+09:06:42 709	Roof open by wind ? 5.7 m/s   213°
+09:06:43 679	Roof closed
+09:06:53 835	Roof open by wind ? 5.7 m/s   212°
+09:07:21 000	Roof closed
+09:07:21 940	Roof open by wind ? 6.1 m/s   212°
+09:07:22 425	Roof closed
+09:07:36 494	Roof open by wind ? 6.3 m/s   215°
+09:08:23 547	Roof closed
+09:08:41 949	Roof open by wind ? 4.7 m/s   213°
+09:08:56 015	Roof closed
+09:09:00 836	Roof open by wind ? 4.9 m/s   214°
+09:10:45 620	Roof closed
+09:10:47 044	Roof open by wind ? 6.7 m/s   207°
+09:10:50 924	Roof open
+09:10:51 409	Roof open by wind ? 6.8 m/s   206°
+09:11:54 475	Door open
+09:12:01 265	Door closed
+09:12:13 876	Roof closed
+09:12:21 606	Roof open and closed !!! roof sensor error                            < ERROR
+09:12:22 576	Roof closed
+09:12:23 061	Roof open and closed !!! roof sensor error                            < ERROR
+09:12:23 546	Roof closed
+09:12:29 367	Roof open and closed !!! roof sensor error                            < ERROR
+09:12:29 852	Roof closed
+09:13:02 353	Roof open by wind ? 6.0 m/s   210°
+09:13:04 293	Door open
+09:13:04 779	Roof closed
+09:13:07 174	Roof open by wind ? 5.5 m/s   211°
+09:13:08 629	Door closed
+09:13:09 599	Roof closed
+09:13:11 026	Roof open by wind ? 5.2 m/s   210°
+09:13:12 967	Roof open
+09:13:13 452	Roof open by wind ? 5.1 m/s   209°
+09:13:14 907	Roof closed
+09:13:15 847	Roof open by wind ? 5.2 m/s   207°
+09:13:16 332	Roof open
+09:13:16 817	Roof open by wind ? 5.2 m/s   206°
+09:13:17 303	Roof closed
+09:13:18 243	Roof open by wind ? 5.2 m/s   206°
+09:13:19 698	Roof closed
+09:13:20 638	Roof open by wind ? 5.1 m/s   206°
+09:13:21 608	Roof open
+09:13:22 093	Roof closed
+09:13:22 094	Roof closed
+09:13:23 034	Roof open by wind ? 5.0 m/s   206°
+09:13:23 519	Roof open
+09:13:24 005	Roof open by wind ? 5.0 m/s   206°
+09:14:09 598	Roof closed
+09:14:10 539	Roof open by wind ? 7.3 m/s   206°
+09:14:13 449	Roof closed
+09:14:14 874	Roof open by wind ? 7.3 m/s   206°
+09:14:15 359	Roof closed
+09:14:15 844	Roof open by wind ? 7.2 m/s   207°
+09:14:27 487	Roof closed
+09:14:29 397	Roof open by wind ? 7.3 m/s   206°
+09:14:37 158	Roof closed
+09:14:38 098	Roof open by wind ? 7.7 m/s   206°
+09:14:38 583	Roof open
+09:14:39 068	Roof open by wind ? 7.8 m/s   206°
+09:14:40 038	Roof closed
+09:14:40 978	Roof open by wind ? 7.8 m/s   206°
+09:14:43 403	Roof open
+09:14:43 888	Roof open by wind ? 7.8 m/s   207°
+09:14:44 374	Roof closed
+09:14:45 315	Roof open by wind ? 7.8 m/s   207°
+09:14:58 895	Roof closed
+09:17:05 469	Roof open by wind ? 4.9 m/s   209°
+09:18:46 142	Roof opening
+09:19:01 432	Roof open
+09:19:06 816	Roof closing
+09:19:22 815	Roof closed
+09:19:27 839	Roof opening
+09:19:42 739	Roof open
+09:20:23 740	Roof closing
+09:20:39 527	Roof closed
+09:21:29 998	Balloon absence low 
+09:21:36 788	Balloon absence high
+09:21:38 728	Balloon detection high
+09:21:53 282	Balloon absence high
+09:21:56 681	Balloon detection low 
+09:21:59 106	Balloon absence low 
+09:22:17 537	Balloon detection high
+09:22:19 963	Balloon absence high
+09:22:20 933	Balloon detection low 
+09:22:23 358	Balloon absence low 
+09:22:38 395	Balloon detection high
+09:22:39 850	Balloon absence high
+09:22:41 790	Balloon detection high
+09:22:44 218	Balloon detection low 
+09:22:58 286	Balloon absence high
+09:23:03 136	Balloon absence low 
+09:23:26 905	Balloon detection high
+09:23:29 331	Balloon detection low 
+09:23:33 698	Balloon absence high
+09:23:34 668	Balloon absence low 
+09:25:59 390	Roof opening
+09:26:14 784	Roof open
+09:26:23 588	Roof closing
+09:26:39 555	Roof closed
+09:27:35 346	Door open
+09:27:39 226	Door closed
+09:28:13 742	Carrousel calibration (-150°, 0°, 180°): 168 464 819
+09:28:29 939	Carrousel calibration (-150°, 0°, 180°): 168 464 819
+09:28:51 344	STOP button                                                           < ERROR
+09:29:46 947	Door open
+09:29:57 069	STOP button                                                           < ERROR
+09:30:00 942	Door closed
+09:30:13 467	Carrousel calibration (-150°, 0°, 180°): 168 464 819
+09:30:32 079	Carrousel calibration (-150°, 0°, 180°): 168 464 819
+09:31:43 525	Door open
+09:32:10 869	Module position 0° : 458
+09:32:27 851	Balloon detection low 
+09:32:28 641	Balloon absence low 
+09:32:36 428	Balloon detection low 
+09:32:37 094	Balloon absence low 
+09:32:53 326	Module position -150° : 166
+09:34:01 691	Balloon detection low 
+09:34:02 711	Balloon absence low 
+09:34:05 086	Balloon detection high
+09:34:05 211	Balloon detection low 
+09:34:05 836	Balloon absence low 
+09:34:06 086	Balloon absence high
+09:34:13 396	Module position 180° : 817
+09:34:18 051	Carrousel calibration (-150°, 0°, 180°): 166 458 817
+09:34:24 373	Door closed
+09:38:38 143	Door open
+09:38:50 731	Door closed
+
+10:50:00 889	======================= Launch planned 11:00 =====================
+10:50:00 889	Sondes list :   2.9   2.9   2.9   2.9   2.9   2.9   2.9   X   X   X   X   6.9
+10:50:00 889	Flowmeter : 18.3°C, 1.289 bar
+10:50:00 889	Wind OK    (3.3 m/s   211°)
+10:50:01 279	Radiosounding software connection
+10:50:06 247	IR2010 --> STATION OK. PRESSION BARO=1008.9
+10:50:06 248	IR2010 <-- 11404.0 MHz ?
+10:50:15 390	IR2010 --> FREQUENCE LIBRE
+10:50:15 391	IR2010 <-- 14SOL DD=211° :FF=3.8M/S :T=16.76°C :U=45.4%
+10:50:15 391	Relaunch parameters 10min 300hPa
+10:50:15 842	############## SONDE [ 12 ] 810210743   404.000 MHz ##############
+10:50:15 842	Age sonde 6.9, balloon 6.9, position 06h
+10:50:15 842	IR2010 <-- 12SONDE EN MARCHE EFFECTUE :SN=810210743 :TR=221Cx10 :TC=220Cx10 :KT=099776 :UR=39% :UC=40% :KU=0000
+10:51:33 499	IR2010 --> FICHIERS CREES=c:\gpsonde\Data\2019\BA201905061051.cor
+10:51:33 500	IR2010 --> SONDE 810210743 OK : 18.9°C 44.4% 5.5V
+10:51:33 500	Camera: 20190506_1051_1.jpg
+10:52:10 812	############## INFLATION 1100 l, Source 1, 1.290 bar #############
+10:52:33 042	Balloon detection low     (56 l, 166 l/mn, 1.367 bar)
+10:53:33 722	Balloon detection high    (222 l, 166 l/mn, 1.367 bar)
+10:58:51 528	Inflation end [ 12 ]      (1102 l, 166.5 l/min, remaining 2.5 m3 / 0.0 m3)
+10:59:56 086	Gas pressure 1.092 bar -> 1.387 bar  (+0.295 bar/min)
+11:00:00 161	########################### LAUNCH ###############################
+11:00:00 164	Roof opening
+11:00:00 164	IR2010 <-- 17PING 
+11:00:00 165	IR2010 --> PING LAST DATA SONDE 1s AGO, Alt=98.0m Ascent=0.0m/s Lat=41.384493 Lng=2.117500 T=21.3°C U=40.0% GpsTime=39619
+11:00:15 632	Roof open
+11:00:16 383	IR2010 <-- 14SOL DD=213° :FF=7.7M/S :T=17.09°C :U=45.2%
+11:00:16 537	Balloon [ 12 ] release   (wind 7.7 m/s   213°)
+11:00:16 537	IR2010 <-- 08LACHER EFFECTUE
+11:00:17 998	Sonde [ 12 ] OUT
+11:00:18 542	Balloon absence high
+11:00:18 544	Balloon absence low 
+11:00:25 492	Roof closure
+11:00:40 225	IR2010 --> DEPART DETECTE
+11:00:41 877	Roof closed
+12:39:01 549	IR2010 --> SONDAGE OK 27878m 16.5hPa 4.6m/s
+12:39:01 551	IR2010 <-- 16ARRET
+12:39:01 562	======================= Radiosounding end ========================
+12:39:01 562	Next launch : 06 maig 23:00
+
+
+22:50:00 610	======================= Launch planned 23:00 =====================
+22:50:00 610	Sondes list :   3.4   3.4   3.4   3.4   3.4   3.4   3.4   X   X   X   X   X
+22:50:00 610	Flowmeter : 21.1°C, 1.286 bar
+22:50:00 610	Wind OK    (2.0 m/s   229°)
+22:50:00 945	Radiosounding software connection
+22:50:05 968	IR2010 --> STATION OK. PRESSION BARO=1009.5
+22:50:05 968	IR2010 <-- 11404.0 MHz ?
+22:50:16 105	IR2010 --> FREQUENCE LIBRE
+22:50:16 105	IR2010 <-- 14SOL DD=231° :FF=2.1M/S :T=13.79°C :U=49.2%
+22:50:16 105	Relaunch parameters 10min 300hPa
+22:50:16 164	############## SONDE [ 1 ] 810210744   404.000 MHz ##############
+22:50:16 164	Age sonde 3.4, balloon 3.4, position 01h
+22:50:16 164	IR2010 <-- 12SONDE EN MARCHE EFFECTUE :SN=810210744 :TR=222Cx10 :TC=224Cx10 :KT=100757 :UR=49% :UC=47% :KU=0000
+22:51:02 796	IR2010 --> FICHIERS CREES=c:\gpsonde\Data\2019\BA201905062251.cor
+22:51:02 797	IR2010 --> SONDE 810210744 OK : 18.6°C 43.2% 5.8V
+22:51:02 797	Camera: 20190506_2251_1.jpg
+22:51:09 989	############## INFLATION 1100 l, Source 1, 1.286 bar #############
+22:51:35 606	Balloon detection low     (66 l, 168 l/mn, 1.329 bar)
+22:52:37 208	Balloon detection high    (239 l, 167 l/mn, 1.326 bar)
+22:57:48 603	Inflation end [ 1 ]      (1100 l, 166.7 l/min, remaining 1.3 m3 / 0.0 m3)
+22:58:52 939	Gas pressure 1.051 bar -> 1.396 bar  (+0.345 bar/min)
+23:00:00 891	########################### LAUNCH ###############################
+23:00:00 892	Roof opening
+23:00:00 892	IR2010 <-- 17PING 
+23:00:00 893	IR2010 --> PING LAST DATA SONDE 1s AGO, Alt=98.0m Ascent=0.0m/s Lat=41.384517 Lng=2.117504 T=18.6°C U=38.9% GpsTime=82821
+23:00:16 086	Roof open
+23:00:16 101	IR2010 <-- 14SOL DD=225° :FF=2.6M/S :T=13.71°C :U=49.8%
+23:00:16 609	Balloon [ 1 ] release   (wind 2.6 m/s   225°)
+23:00:16 609	IR2010 <-- 08LACHER EFFECTUE
+23:00:17 583	Sonde [ 1 ] OUT
+23:00:18 514	Balloon absence high
+23:00:18 514	Balloon absence low 
+23:00:25 212	Roof closure
+23:00:41 374	Roof closed
+23:00:42 348	IR2010 --> DEPART DETECTE
+01:22:39 418	IR2010 --> SONDAGE OK 31443m 9.6hPa 4.0m/s
+01:22:39 419	IR2010 <-- 16ARRET
+01:22:39 429	======================= Radiosounding end ========================
+01:22:39 430	Next launch : 07 maig 11:00
+

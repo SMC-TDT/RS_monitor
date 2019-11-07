@@ -1,0 +1,45 @@
+
+10:50:00 104	======================= Launch planned 11:00 =====================
+10:50:00 104	Sondes list :   0.9   0.9   0.9   0.9   0.9   0.9   0.9   X   X   4.9   4.9   4.9
+10:50:00 104	Flowmeter : 22.3°C, 1.316 bar
+10:50:00 104	Wind OK    (3.5 m/s   277°)
+10:50:00 354	Radiosounding software connection
+10:50:05 408	IR2010 --> STATION OK. PRESSION BARO=1001.2
+10:50:05 408	IR2010 <-- 11404.0 MHz ?
+10:50:15 548	IR2010 --> FREQUENCE LIBRE
+10:50:15 548	IR2010 <-- 14SOL DD=278° :FF=3.1M/S :T=16.69°C :U=46.6%
+10:50:15 548	Relaunch parameters 10min 300hPa
+10:50:15 642	############## SONDE [ 10 ] 810210738   404.000 MHz ##############
+10:50:15 642	Age sonde 4.9, balloon 4.9, position 02h
+10:50:15 642	IR2010 <-- 12SONDE EN MARCHE EFFECTUE :SN=810210738 :TR=223Cx10 :TC=222Cx10 :KT=099529 :UR=40% :UC=41% :KU=0000
+10:50:54 111	IR2010 --> FICHIERS CREES=c:\gpsonde\Data\2019\BA201905041050.cor
+10:50:54 111	IR2010 --> SONDE 810210738 OK : 22.0°C 40.0% 5.7V
+10:50:54 111	Camera: 20190504_1050_1.jpg
+10:51:07 699	############## INFLATION 1100 l, Source 1, 1.314 bar #############
+10:51:28 712	Balloon detection low     (51 l, 165 l/mn, 1.371 bar)
+10:52:30 753	Balloon detection high    (221 l, 165 l/mn, 1.372 bar)
+10:57:51 599	Inflation end [ 10 ]      (1101 l, 164.7 l/min, remaining 6.3 m3 / 0.0 m3)
+10:58:56 495	Gas pressure 1.098 bar -> 1.389 bar  (+0.291 bar/min)
+11:00:00 393	########################### LAUNCH ###############################
+11:00:00 393	Roof opening
+11:00:00 393	IR2010 <-- 17PING 
+11:00:00 393	IR2010 --> PING LAST DATA SONDE 0s AGO, Alt=98.0m Ascent=-0.1m/s Lat=41.384483 Lng=2.117497 T=22.0°C U=38.9% GpsTime=39629
+11:00:23 715	Roof opened too slowly                                                < ERROR
+11:00:28 785	Roof blocked (middle) 17.1°C 46%                                      < ERROR
+11:00:29 612	IR2010 <-- 16ARRET
+11:00:29 612	======================= Radiosounding end ========================
+11:00:29 612	Next launch : 04 maig 23:00
+
+11:00:29 783	Roof closure
+11:00:46 413	Roof closed
+13:33:04 192	Roof opening
+13:33:18 590	Roof open
+13:33:27 373	Roof closing
+13:33:42 287	Roof closed
+13:34:43 065	Roof opening
+13:35:05 201	Roof closing
+13:35:20 208	Roof closed
+22:50:00 823	Launch delayed (23:00) : Inflation tube not empty                     < ERROR
+22:59:55 028	============== Launch canceled (23:00) : Inflation tube not empty =============< ERROR
+22:59:55 028	Next launch : 05 maig 11:00
+
