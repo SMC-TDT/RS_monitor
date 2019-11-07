@@ -1,0 +1,38 @@
+
+10:50:00 944	======================= Launch planned 11:00 =====================
+10:50:00 944	Sondes list :   1.8   1.8   X   X   1.8   1.8   1.8   1.8   1.8   1.8   1.8   X
+10:50:00 944	Flowmeter : 20.6°C, 1.277 bar
+10:50:00 944	Wind OK    (1.5 m/s   193°)
+10:50:01 412	Radiosounding software connection
+10:50:06 451	IR2010 --> STATION OK. PRESSION BARO=1006.7
+10:50:06 451	IR2010 <-- 11404.0 MHz ?
+10:50:15 593	IR2010 --> FREQUENCE LIBRE
+10:50:15 593	IR2010 <-- 14SOL DD=215° :FF=1.7M/S :T=26.98°C :U=59.9%
+10:50:15 593	Relaunch parameters 10min 300hPa
+10:50:15 998	############## SONDE [ 1 ] 904213934   404.000 MHz ##############
+10:50:15 998	Age sonde 1.8, balloon 1.8, position 01h
+10:50:15 998	IR2010 <-- 12SONDE EN MARCHE EFFECTUE :SN=904213934 :TR=257Cx10 :TC=257Cx10 :KT=100186 :UR=72% :UC=72% :KU=0000
+10:50:59 211	IR2010 --> FICHIERS CREES=c:\gpsonde\Data\2019\BA201909291050.cor
+10:50:59 211	IR2010 --> SONDE 904213934 OK : 21.7°C 88.5% 5.9V
+10:50:59 211	Camera: 20190929_1050_1.jpg
+10:51:05 872	############## INFLATION 1000 l, Source 1, 1.277 bar #############
+10:51:33 921	Balloon detection low     (74 l, 162 l/mn, 1.316 bar)
+10:52:30 845	Balloon detection high    (227 l, 161 l/mn, 1.312 bar)
+10:57:21 208	Inflation end [ 1 ]      (1001 l, 161.6 l/min, remaining 2.9 m3 / 0.0 m3)
+10:58:25 917	Gas pressure 1.084 bar -> 1.382 bar  (+0.298 bar/min)
+11:00:00 235	########################### LAUNCH ###############################
+11:00:00 235	Roof opening
+11:00:00 235	IR2010 <-- 17PING 
+11:00:00 235	IR2010 --> PING LAST DATA SONDE 0s AGO, Alt=98.0m Ascent=0.0m/s Lat=41.384482 Lng=2.117463 T=21.6°C U=85.8% GpsTime=39618
+11:00:23 557	Roof opened too slowly                                                < ERROR
+11:00:28 627	Roof blocked (middle) 26.7°C 62%                                      < ERROR
+11:00:29 282	IR2010 <-- 16ARRET
+11:00:29 282	======================= Radiosounding end ========================
+11:00:29 282	Next launch : 29 set 23:00
+
+11:00:29 626	Roof closure
+11:00:46 505	Roof closed
+22:50:00 650	Launch delayed (23:00) : Inflation tube not empty                     < ERROR
+22:59:55 869	============== Launch canceled (23:00) : Inflation tube not empty =============< ERROR
+22:59:55 869	Next launch : 30 set 11:00
+

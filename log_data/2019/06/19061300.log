@@ -1,0 +1,155 @@
+
+10:50:00 170	======================= Launch planned 11:00 =====================
+10:50:00 170	Sondes list :   X   X   X   3.9   3.9   3.9   3.9   3.9   X   X   X   X
+10:50:00 170	Flowmeter : 23.7°C, 1.288 bar
+10:50:00 170	Wind OK    (3.3 m/s   341°)
+10:50:00 497	Radiosounding software connection
+10:50:05 552	IR2010 --> STATION OK. PRESSION BARO=1002.0
+10:50:05 552	IR2010 <-- 11404.0 MHz ?
+10:50:15 692	IR2010 --> FREQUENCE LIBRE
+10:50:15 692	IR2010 <-- 14SOL DD=338° :FF=3.2M/S :T=13.86°C :U=81.2%
+10:50:15 692	Relaunch parameters 10min 300hPa
+10:50:16 129	############## SONDE [ 4 ] 904213812   404.000 MHz ##############
+10:50:16 129	Age sonde 3.9, balloon 3.9, position 01h
+10:50:16 129	IR2010 <-- 12SONDE EN MARCHE EFFECTUE :SN=904213812 :TR=230Cx10 :TC=231Cx10 :KT=100229 :UR=51% :UC=54% :KU=0000
+10:51:02 367	IR2010 --> FICHIERS CREES=c:\gpsonde\Data\2019\BA201906111051.cor
+10:51:02 367	IR2010 --> SONDE 904213812 OK : 21.2°C 60.7% 5.8V
+10:51:02 367	Camera: 20190611_1051_1.jpg
+10:51:09 715	############## INFLATION 1000 l, Source 1, 1.289 bar #############
+10:51:30 088	Balloon detection low     (50 l, 166 l/mn, 1.328 bar)
+10:52:34 048	Balloon detection high    (227 l, 166 l/mn, 1.331 bar)
+10:57:16 237	Inflation end [ 4 ]      (1001 l, 164.6 l/min, remaining 8.9 m3 / 0.0 m3)
+10:58:21 071	Gas pressure 1.099 bar -> 1.396 bar  (+0.297 bar/min)
+11:00:00 459	########################### LAUNCH ###############################
+11:00:00 459	Roof opening
+11:00:00 459	IR2010 <-- 17PING 
+11:00:00 459	IR2010 --> PING LAST DATA SONDE 0s AGO, Alt=98.0m Ascent=0.0m/s Lat=41.384502 Lng=2.117536 T=21.1°C U=66.1% GpsTime=39622
+11:00:16 480	Roof open
+11:00:16 683	IR2010 <-- 14SOL DD=338° :FF=5.3M/S :T=13.82°C :U=80.4%
+11:00:17 307	Balloon [ 4 ] release   (wind 5.3 m/s   338°)
+11:00:17 307	IR2010 <-- 08LACHER EFFECTUE
+11:00:18 586	Sonde [ 4 ] OUT
+11:00:19 678	Balloon absence high
+11:00:19 678	Balloon absence low 
+11:00:25 793	Roof closure
+11:00:41 487	Roof closed
+11:02:11 265	Sonde ascent not detected                                             < ERROR
+11:02:11 265	Trying sonde OFF
+11:02:19 377	IR2010 <-- 17PING 
+11:02:19 377	IR2010 --> PING LAST DATA SONDE 0s AGO, Alt=437.1m Ascent=2.9m/s Lat=41.375401 Lng=2.121764 T=11.4°C U=98.5% GpsTime=39761
+11:02:19 377	Sonde encore allumée, module vide, retombée au sol ?
+11:02:21 405	            -------------------------------///-------------------------------
+11:02:21 436	IR2010 <-- 11403.6 MHz ?
+11:02:30 843	IR2010 --> FREQUENCE LIBRE
+11:02:30 843	IR2010 <-- 14SOL DD=333° :FF=5.2M/S :T=13.33°C :U=83.7%
+11:02:30 843	Relaunch parameters 10min 300hPa
+11:02:31 093	############## SONDE [ 5 ] 904213828   403.600 MHz ##############
+11:02:31 093	Age sonde 3.9, balloon 3.9, position 01h
+11:02:31 093	IR2010 <-- 12SONDE EN MARCHE EFFECTUE :SN=904213828 :TR=230Cx10 :TC=230Cx10 :KT=100073 :UR=52% :UC=55% :KU=0000
+11:03:01 279	IR2010 --> FICHIERS CREES=c:\gpsonde\Data\2019\BA201906111103.cor
+11:03:01 279	IR2010 --> SONDE 904213828 OK : 21.3°C 64.4% 5.8V
+11:03:01 279	Camera: 20190611_1103_1.jpg
+11:03:08 611	############## INFLATION 1000 l, Source 1, 1.397 bar #############
+11:03:36 660	Balloon detection low     (68 l, 166 l/mn, 1.329 bar)
+11:04:29 107	Balloon detection high    (214 l, 166 l/mn, 1.329 bar)
+11:09:15 180	Inflation end [ 5 ]      (1001 l, 165.7 l/min, remaining 7.7 m3 / 0.0 m3)
+11:09:15 180	########################### LAUNCH ###############################
+11:09:15 180	Roof opening
+11:09:15 180	IR2010 <-- 17PING 
+11:09:15 180	IR2010 --> PING LAST DATA SONDE 1s AGO, Alt=98.0m Ascent=0.0m/s Lat=41.384531 Lng=2.117499 T=20.3°C U=72.4% GpsTime=40176
+11:09:30 999	Roof open
+11:09:31 342	IR2010 <-- 14SOL DD=323° :FF=5.9M/S :T=13.68°C :U=81.6%
+11:09:31 872	Balloon [ 5 ] release   (wind 6.0 m/s   323°)
+11:09:31 872	IR2010 <-- 08LACHER EFFECTUE
+11:09:33 151	Sonde [ 5 ] OUT
+11:09:34 197	Balloon absence high
+11:09:34 197	Balloon absence low 
+11:09:40 452	Roof closure
+11:09:56 005	Roof closed
+11:09:57 347	IR2010 --> DEPART DETECTE
+11:10:19 998	Gas pressure 1.116 bar -> 1.408 bar  (+0.292 bar/min)
+12:17:53 322	IR2010 --> SONDAGE OK 19455m 62.3hPa 4.6m/s
+12:17:53 322	IR2010 <-- 16ARRET
+12:17:53 338	======================= Radiosounding end ========================
+12:17:53 338	Next launch : 11 juny 23:00
+
+15:52:24 062	Chargement/loading [ 1 ]
+15:53:43 810	GC value sonde ON: 52.4%
+15:53:47 913	GC value sonde OFF: 52.5%
+15:54:30 329	Door open
+15:56:57 874	Chargement/Loading [ 1 ] 904213800 6.1V 6336Hz TR=224Cx10:TC=225Cx10:KT=100214:UR=52%:UC=58%:KU=6317
+15:56:58 685	Chargement/loading [ 2 ]
+15:58:04 767	GC value sonde ON: 53.4%
+15:58:08 573	GC value sonde OFF: 53.5%
+16:01:13 683	Chargement/Loading [ 2 ] 809214438 6.1V 6347Hz TR=225Cx10:TC=224Cx10:KT=099727:UR=53%:UC=55%:KU=0000
+16:01:14 619	Chargement/loading [ 3 ]
+16:06:48 444	Sonde non détectée dans le groundcheck                                < ERROR
+16:08:11 982	GC value sonde ON: 53.4%
+16:08:15 945	GC value sonde OFF: 53.5%
+16:09:59 092	Chargement/Loading [ 3 ] 904213776 6.2V 6365Hz TR=228Cx10:TC=230Cx10:KT=100966:UR=54%:UC=52%:KU=0000
+16:09:59 950	Chargement/loading [ 4 ]
+16:11:00 900	GC value sonde ON: 53.9%
+16:11:05 314	GC value sonde OFF: 53.9%
+16:12:28 369	Chargement/Loading [ 4 ] 904213789 6.1V 6428Hz TR=229Cx10:TC=230Cx10:KT=100405:UR=54%:UC=56%:KU=0000
+16:12:32 362	Chargement/loading [ 5 ]
+16:13:51 829	GC value sonde ON: 54.0%
+16:13:55 667	GC value sonde OFF: 54.1%
+16:17:19 481	Chargement/Loading [ 5 ] 904213790 6.2V 6444Hz TR=230Cx10:TC=231Cx10:KT=100564:UR=54%:UC=52%:KU=6468
+16:17:20 199	Chargement/loading [ 9 ]
+16:18:54 828	GC value sonde ON: 53.9%
+16:18:58 806	GC value sonde OFF: 53.9%
+16:22:10 843	Chargement/Loading [ 9 ] 904213791 6.1V 6402Hz TR=232Cx10:TC=232Cx10:KT=100110:UR=54%:UC=56%:KU=0000
+16:22:19 438	Chargement/loading [ 10 ]
+16:23:17 798	GC value sonde ON: 54.9%
+16:23:22 478	GC value sonde OFF: 54.9%
+16:25:58 057	Chargement/Loading [ 10 ] 904213810 6.1V 6433Hz TR=233Cx10:TC=230Cx10:KT=098776:UR=55%:UC=57%:KU=0000
+16:25:58 634	Chargement/loading [ 11 ]
+16:27:05 808	GC value sonde ON: 54.1%
+16:27:09 614	GC value sonde OFF: 54.1%
+16:29:57 221	Chargement/Loading [ 11 ] 904213780 6.1V 6355Hz TR=234Cx10:TC=234Cx10:KT=100055:UR=54%:UC=57%:KU=0000
+16:29:57 986	Chargement/loading [ 12 ]
+16:31:18 809	GC value sonde ON: 53.6%
+16:31:23 068	GC value sonde OFF: 53.8%
+16:34:07 165	Chargement/Loading [ 12 ] 904213827 6.2V 6444Hz TR=235Cx10:TC=239Cx10:KT=101502:UR=54%:UC=52%:KU=0000
+16:34:27 445	Door closed
+
+22:50:00 927	======================= Launch planned 23:00 =====================
+22:50:00 927	Sondes list :   0.3   0.3   0.3   0.3   0.3   4.4   4.4   4.4   0.3   0.3   0.3   0.3
+22:50:00 927	Flowmeter : 23.3°C, 1.307 bar
+22:50:00 927	Wind OK    (2.1 m/s   322°)
+22:50:01 302	Radiosounding software connection
+22:50:06 356	IR2010 --> STATION OK. PRESSION BARO=1005.1
+22:50:06 356	IR2010 <-- 11404.0 MHz ?
+22:50:16 496	IR2010 --> FREQUENCE LIBRE
+22:50:16 496	IR2010 <-- 14SOL DD=315° :FF=2.4M/S :T=13.53°C :U=82.0%
+22:50:16 496	Relaunch parameters 10min 300hPa
+22:50:16 824	############## SONDE [ 6 ] 904213799   404.000 MHz ##############
+22:50:16 824	Age sonde 4.4, balloon 4.4, position 11h
+22:50:16 824	IR2010 <-- 12SONDE EN MARCHE EFFECTUE :SN=904213799 :TR=229Cx10 :TC=233Cx10 :KT=101451 :UR=52% :UC=52% :KU=0000
+22:51:03 171	IR2010 --> FICHIERS CREES=c:\gpsonde\Data\2019\BA201906112251.cor
+22:51:03 171	IR2010 --> SONDE 904213799 OK : 20.1°C 62.2% 5.7V
+22:51:03 171	Camera: 20190611_2251_1.jpg
+22:51:09 630	############## INFLATION 1000 l, Source 1, 1.307 bar #############
+22:51:36 400	Balloon detection low     (70 l, 166 l/mn, 1.328 bar)
+22:52:32 045	Balloon detection high    (221 l, 166 l/mn, 1.331 bar)
+22:57:14 967	Inflation end [ 6 ]      (1001 l, 165.0 l/min, remaining 6.6 m3 / 0.0 m3)
+22:58:19 816	Gas pressure 1.084 bar -> 1.406 bar  (+0.322 bar/min)
+23:00:00 218	########################### LAUNCH ###############################
+23:00:00 218	Roof opening
+23:00:00 218	IR2010 <-- 17PING 
+23:00:00 218	IR2010 --> PING LAST DATA SONDE 1s AGO, Alt=98.0m Ascent=0.0m/s Lat=41.384498 Lng=2.117475 T=20.0°C U=63.6% GpsTime=82822
+23:00:15 116	Roof open
+23:00:15 428	IR2010 <-- 14SOL DD=341° :FF=0.8M/S :T=13.51°C :U=82.6%
+23:00:16 036	Balloon [ 6 ] release   (wind 0.8 m/s   342°)
+23:00:16 036	IR2010 <-- 08LACHER EFFECTUE
+23:00:18 595	Sonde [ 6 ] OUT
+23:00:19 593	Balloon absence high
+23:00:19 593	Balloon absence low 
+23:00:26 566	Roof closure
+23:00:42 681	Roof closed
+23:00:51 417	IR2010 --> DEPART DETECTE
+00:45:17 855	IR2010 --> SONDAGE OK 27024m 19.1hPa 4.3m/s
+00:45:17 855	IR2010 <-- 16ARRET
+00:45:17 855	======================= Radiosounding end ========================
+00:45:17 855	Next launch : 12 juny 11:00
+
