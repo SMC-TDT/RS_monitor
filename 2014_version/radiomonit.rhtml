@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC>
+
+<%
+
+######################################################################################################################
+##################################### Web monitoratge Radiosondatges Barcelona #######################################
+#####################################           Carles Cayuela, 2014           #######################################
+######################################################################################################################
+
+# Per defecte, el programa consulta:
+# Data inici: 30 dies menys que la data actual del sistema
+# Data final: 2 dies menys que la data actual del sistema
+# Variable: Altitud
+
+# Els fitxers LOG dels radiosondatges es troben a: "/mnt/Robotsonde/"
+# Estan endreçats en carpetes per .../ANY/MES/
+# La informació es guarda a "radiosonda.txt" i a "radiosonda_errors.txt"
+
+## SETTINGS ##########################################################################################################
+
+path_inp <- "../output"
+path_out <- "/var/www/html/img_RS"
+path_lib <- NULL
+fname_inp <- "radiosonda.txt"
+fname_err <- "radiosonda_errors.txt"
+
+# Noms de les sondes; posicions en el carrusel
+orderlist <- c("B?", paste0("B", seq(1,12)))
+
+## FUNCTIONS #########################################################################################################
+
+library(reshape2, lib.loc=path_lib)
+library(ggplot2, lib.loc=path_lib)
+library(stats, lib.loc=path_lib)
+library(brew, lib.loc=path_lib)
+library(scales, lib.loc=path_lib)
+library(chron, lib.loc=path_lib)
+library(xtable, lib.loc=path_lib)
+
+## INPUT #############################################################################################################
+
+# Dates
+dataInici <- ifelse(is.null(GET$dataInici), format(as.Date(format(Sys.Date()-30)), "%Y/%m/%d"), GET$dataInici)
+dataFinal <- ifelse(is.null(GET$dataFinal), format(as.Date(format(Sys.Date()-2)), "%Y/%m/%d"), GET$dataFinal)
+variable <- ifelse(is.null(GET$variable), 'Altitud', GET$variable)
+
+######################################################################################################################
+
+# Fitxers entrada
+file_inp <- paste(path_inp, fname_inp, sep="/")
+file_err <- paste(path_inp, fname_err, sep="/")
+
+radios <- read.table(file=file_inp, sep="\t", header=T,
+                     colClasses=c("Date", "factor", "character", "character", "integer",
+                                  "integer", "numeric", "integer", "character", "integer"))
+
+errors <- read.table(file=file_err, sep="\t", header=T,
+                     colClasses=c("Date", "character", "character"))
+
+# GRAFICS MONITORATGE
+
+# Selecciona dates a les taules:
+if (!is.null(dataInici) & !is.null(dataFinal)){
+  radios_subset <- subset(radios, Data>=dataInici & Data<=dataFinal)
+  errors_subset <- subset(errors, Data>=dataInici & Data<=dataFinal)
+
+  if (nrow(radios_subset)==0) {
+    dataInici <- format(as.Date(format(Sys.Date()-30)), "%Y/%m/%d")
+    dataFinal <- format(as.Date(format(Sys.Date()-2)), "%Y/%m/%d")
+    radios_subset <- subset(radios, Data>=dataInici & Data<=dataFinal)
+    errors_subset <- subset(errors, Data>=dataInici & Data<=dataFinal)
+  }
+}
+
+# Grafic de Variables:
+if (nrow(radios_subset)!= 0){
+  yaxis_variable <- switch(variable, "Altitud" = "Altitud [m]", "Pressio" = "Pressio [hPa]",
+                           "Durada" = "Durada [min]", "Rellancaments" = "Rellancaments [u]")
+
+  # Paràmetres resum:
+  NoRealitzat <- length(which(radios_subset$Realitzat == "No"))
+  SiRealitzat <- length(which(radios_subset$Realitzat == "Si"))
+  SondesUtil <- sum(radios_subset$Sondes, na.rm=T)
+  Fallits <- SondesUtil-SiRealitzat
+  relaunches <- sum(radios_subset$Rellancaments, na.rm=T)
+  variable_mean <- round(apply(subset(radios_subset, select=variable), 2, mean, na.rm=T), digits=0)
+  variable_min <- round(apply(subset(radios_subset, select=variable), 2, min, na.rm=T), digits=0)
+  variable_max <- round(apply(subset(radios_subset, select=variable), 2, max, na.rm=T), digits=0)
+
+  # Gràfic ggplot Variables:
+  df_melt <- melt(radios_subset, id.vars=c("Data", "Sessio"), measure.vars= variable)
+  df_plot <- ggplot(data=df_melt, aes(x=Data, y=value, group=Sessio, colour=Sessio)) +
+    geom_point(size=3) +
+    scale_y_continuous(name=yaxis_variable) +
+    theme(legend.position="bottom",
+          legend.title=element_blank(),
+          legend.text=element_text(size=14),
+          axis.text.x=element_text(angle=-90),
+          axis.text=element_text(size=10),
+          axis.title=element_text(size=12),
+          axis.ticks=element_line(size=1),
+          panel.grid.major=element_line(colour="white",size=0.5))
+
+  if (nrow(df_melt) < 31){
+    t_brk <- "day"
+  }else if (nrow(df_melt) < 123){
+    t_brk <- "week"
+  }else{
+    t_brk <- "month"
+  }
+
+  df_plot <-  df_plot + scale_x_date(name="", breaks = date_breaks(t_brk), labels=date_format("%d %b %Y"))
+
+  # Sortida gràfica Variables:
+  setContentType(type="png")
+  fig_out <- paste(path_out, paste0(variable, ".png"), sep="/")
+  png(fig_out, type="cairo", width=700, height=410)
+  plot(df_plot)
+  dev.off()
+
+  # Grafic Sondes amb errors
+  Fallides_mati <- radios_subset[(radios_subset$Sessio=="mati"), c("Sessio", "Fallida")]
+  Fallides_mati <- Fallides_mati[grep("B\\d*", Fallides_mati$Fallida),]
+  Fallides_mati$Fallida[Fallides_mati$Fallida=="B"] <- "B?"
+  Fallides_nit <- radios_subset[(radios_subset$Sessio=="nit"), c("Sessio", "Fallida")]
+  Fallides_nit <- Fallides_nit[grep("B\\d*", Fallides_nit$Fallida),]
+
+  if (nrow(Fallides_mati)==0){
+    Fallides_mati <- NULL
+  }
+  if (nrow(Fallides_nit)== 0){
+    Fallides_nit <- NULL
+  }
+
+  SondesFallides <- rbind(Fallides_mati, Fallides_nit)
+
+  if (length(SondesFallides)!= 0){
+
+    SondesFallides <- transform(SondesFallides, Sonda = factor(Fallida, levels =orderlist))
+    Sondesplot <- ggplot(SondesFallides, aes(x=Sonda, fill=Sessio)) +
+      stat_count(width=.5) +
+      scale_x_discrete(limits =orderlist) +
+      scale_y_continuous(name="Vegades que ha fallat", breaks=seq(0, 10, 1)) +
+      theme(legend.position="bottom",
+            legend.title=element_blank(),
+            legend.text=element_text(size=14),
+            axis.text=element_text(size=10),
+            axis.title=element_text(size=12),
+            axis.ticks=element_line(size=1),
+            panel.grid.major=element_line(colour="white",size=0.5))
+
+  }else{
+    SondesFallides <- data.frame()
+    Sondesplot <- ggplot(SondesFallides) +
+      geom_histogram(binwidth=.5) +
+      scale_x_discrete(limits=orderlist) +
+      scale_y_continuous(name="Vegades que ha fallat", breaks=seq(0, 10, 1)) +
+      theme(legend.position="bottom",
+            legend.title=element_blank(),
+            legend.text=element_text(size=14),
+            axis.text=element_text(size=10),
+            axis.title=element_text(size=12),
+            axis.ticks=element_line(size=1),
+            panel.grid.major=element_line(colour="white",size=0.5))
+
+  }
+
+  # Sortida gràfica Errors:
+  setContentType(type="png")
+  fig_out <- paste(path_out, "errors.png", sep="/")
+  png(fig_out, type="cairo", width=550, height=350)
+  plot(Sondesplot)
+  dev.off()
+
+  # Genera la taula errors:
+  errors_subset <- as.matrix(errors_subset)
+  errors_taula <- xtable(errors_subset)
+  html_taula <- print(errors_taula, type = "html", include.rownames = F, print.results=F)
+  html_taula <- gsub("\n", "", html_taula)
+
+  # Genera la taula de dades:
+  radios_subset <- as.matrix(radios_subset)
+  dades_taula <- xtable(radios_subset)
+  htmldades_taula <- print(dades_taula, type = "html", include.rownames = F, print.results=F)
+  htmldades_taula <- gsub("\n", "", htmldades_taula)
+
+  # Dies fallits:
+  radios_noreal <- subset(radios_subset, radios_subset[,3] == "No")
+  radios_noreal <- xtable(radios_noreal)
+  html_noreal <- print(radios_noreal, type = "html", include.rownames = F, print.results=F)
+  html_noreal <- gsub("\n", "", html_noreal)
+
+}else{
+  print ("Error")
+}
+
+#####################################################################################################################
+
+%>
+
+<html lang="ca">
+  <head>
+  <title>Monitoratge Robotsonde</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" type="text/css" href="./radiomonit.css">
+  </head>
+  
+  <body>
+  
+
+	<div id="upleft">
+		<h3 style="text-align:center"> Formulari de consulta </h3>
+		<hr size=1 width=80% color="black" align= center />
+			<form method=GET class="margin" >
+				Data inicial (aaaa-mm-dd): <br><input type=date name=dataInici><br>
+				Data final (aaaa-mm-dd): <br><input type=date name=dataFinal><br>
+				Variable: <br><select name="variable" >
+		    		<option value="Altitud" > Altitud
+				<option value="Pressio" > Pressió
+				<option value="Durada" > Durada
+				<option value="Rellancaments" > Rellançaments
+	  			</select> <br>
+				<div class="wrapper">
+				<input class="button" type=submit value="Consulta">
+				</div>
+			</form>
+
+		<hr size=1 width=80% color="black" align= center />
+		<h4 style="text-align:center;"> Errors Robotsonde </h4>
+			<div class="wrapper">
+			<p><button class="button" onclick="openWin()">Consulta els errors</button></p>
+			</div>
+			<script type="text/javascript">
+			function openWin(){
+				var myWindow = window.open("","","width=1000,height=550");
+				myWindow.document.write("<h3> Errors Robotsonde entre <%=dataInici%> i <%=dataFinal%></h3><%=html_taula%>");
+				}
+			</script>
+
+		<hr size=1 width=80% color="black" align= center />
+		<h4 style="text-align:center;"> Radiosondatges no realitzats </h4>
+			<div class="wrapper">
+			<p><button class="button" onclick="opennoReal()">Consulta la taula</button></p>
+			</div>
+			<script type="text/javascript">
+			function opennoReal(){
+				var myWindow = window.open("","","width=750,height=550");
+				myWindow.document.write("<h3> Radiosondatges no realitzats entre <%=dataInici%> i <%=dataFinal%></h3><%=html_noreal%>");
+				}
+			</script>
+
+		<hr size=1 width=80% color="black" align= center />
+		<h4 style="text-align:center;"> Taula dades Robotsonde </h4>
+			<div class="wrapper">
+			<p><button class="button" onclick="openTab()">Consulta la taula</button></p>
+			</div>
+			<script type="text/javascript">
+			function openTab(){
+				var myWindow = window.open("","","width=750,height=550");
+				myWindow.document.write("<h3> Dades monitoratge Robotsonde entre <%=dataInici%> i <%=dataFinal%></h3><%=htmldades_taula%>");
+				}
+			</script>
+
+		<hr size=1 width=80% color="black" align= center />
+		<table align="center">
+		<tr><th>
+		<img src="../Images/logo-meteocat.gif" width=60% height=60% />
+		</th></tr>
+		</table>
+	</div>
+
+  </body>
+</html>
